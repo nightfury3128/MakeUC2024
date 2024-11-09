@@ -1,8 +1,10 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 import joblib
 
 # Initialize Flask app
 app = Flask(__name__)
+CORS(app)
 
 # Load model and vectorizer
 model = joblib.load(r'C:\Users\nipun\OneDrive\Documents\Desktop\MakeUC\MakeUC2024\model.joblib')

@@ -1,25 +1,17 @@
+// Add click event listener to the button in the popup
 document.getElementById("check-email").addEventListener("click", () => {
-    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-      chrome.scripting.executeScript(
-        {
-          target: { tabId: tabs[0].id },
-          function: checkEmail,
-        },
-        (result) => {
-          document.getElementById("result").textContent = result[0].result;
-        }
-      );
-    });
+  // Query the active tab in the current window
+  chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+    // Execute the checkEmail function in the active tab
+    chrome.scripting.executeScript(
+      {
+        target: { tabId: tabs[0].id },
+        function: checkEmail // Defined in content.js, called here
+      },
+      (result) => {
+        // Display the result in the popup
+        document.getElementById("result").textContent = result[0]?.result || "Error in detection";
+      }
+    );
   });
-  
-  async function checkEmail() {
-    const emailText = document.body.innerText; // Simple way to grab email content
-    const response = await fetch("http://127.0.0.1:5000/predict", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email_text: emailText }),
-    });
-    const data = await response.json();
-    return data.is_phishing ? "Phishing Email Detected" : "Safe Email";
-  }
-  
+});
