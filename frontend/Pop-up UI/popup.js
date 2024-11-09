@@ -2,16 +2,14 @@
 document.getElementById("check-email").addEventListener("click", () => {
   // Query the active tab in the current window
   chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-    // Execute the checkEmail function in the active tab
-    chrome.scripting.executeScript(
-      {
-        target: { tabId: tabs[0].id },
-        function: checkEmail // Defined in content.js, called here
-      },
-      (result) => {
+    // Send a message to the content script to initiate the scan
+    chrome.tabs.sendMessage(tabs[0].id, { message: "scan_email" }, (response) => {
+      if (response && response.emailText) {
         // Display the result in the popup
-        document.getElementById("result").textContent = result[0]?.result || "Error in detection";
+        document.getElementById("result").textContent = "Scan completed. Suspicious emails detected!";
+      } else {
+        document.getElementById("result").textContent = "No suspicious emails detected.";
       }
-    );
+    });
   });
 });
