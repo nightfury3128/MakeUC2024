@@ -46,7 +46,7 @@ function scanEmails() {
                 };
 
                 // Send email data to backend API
-                fetch('http://localhost:5000/analyze_email', {
+                fetch('http://localhost:5000/predict', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
