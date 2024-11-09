@@ -11,8 +11,8 @@ tqdm.pandas()
 
 # Load multiple datasets with progress bar
 file_paths = [
-    r'C:\Users\nipun\OneDrive\Documents\Desktop\MakeUC\data\emails copy.csv',  # original dataset
-    r'C:\Users\nipun\OneDrive\Documents\Desktop\MakeUC\data\Phishing_Email.csv',  # add paths to additional datasets here
+    r'data\emails.csv',  # original dataset
+    r'data\Phishing_Email.csv',  # add paths to additional datasets here
     ]
 
 print("Loading datasets...")
