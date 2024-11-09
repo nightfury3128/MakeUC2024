@@ -1,12 +1,37 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Email Phishing Detector</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phisherman Extension</title>
+    <link rel="stylesheet" href="style.css"> <!-- Link to CSS file -->
+    <script src="script.js" defer></script> <!-- Link to JavaScript file -->
 </head>
 <body>
-  <h1>Check Email</h1>
-  <button id="check-email">Check for Phishing</button>
-  <p id="result"></p>
-  <script src="popup.js"></script>
+
+
+<div id="phisherman-dialog">
+    <div id="phisherman-header">
+        <h1>Phisherman</h1>
+        <button id="exit-button">EXIT</button>
+    </div>
+    <div id="phisherman-body">
+        <p>Lorem Ipsum</p>
+        <p>Lorem Ipsum Lorem</p>
+        <p>Lorem Ipsum Lorem Ip</p>
+        <p>Lorem Ipsum Lorem Ipsu</p>
+        <p>Lorem Ipsum Lorem Ipsum</p>
+        <p>Lorem Ipsum Lorem Ipsum bleee</p>
+    </div>
+    <div id="scan-progress-container">
+        <div id="scan-progress"></div>
+    </div>
+    <div id="phisherman-buttons">
+        <button id="start-button">Start Scanning</button>
+        <button id="stop-button" disabled>Stop Scanning</button>
+    </div>
+</div>
+
+
 </body>
 </html>
