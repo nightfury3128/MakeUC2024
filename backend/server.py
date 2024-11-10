@@ -7,8 +7,8 @@ app = Flask(__name__)
 CORS(app)
 
 # Load model and vectorizer
-model = joblib.load(r'C:\Users\nipun\OneDrive\Documents\Desktop\MakeUC\MakeUC2024\model.joblib')
-vectorizer = joblib.load(r'C:\Users\nipun\OneDrive\Documents\Desktop\MakeUC\MakeUC2024\vectorizer.joblib')
+model = joblib.load(r'model.joblib')
+vectorizer = joblib.load(r'vectorizer.joblib')
 
 @app.route('/predict', methods=['POST'])
 def predict():
