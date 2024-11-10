@@ -1,30 +1,36 @@
-Phiserman
-Phiserman is a Chrome Extension designed to detect potential phishing emails in Gmail and Outlook. It scans emails, highlights suspicious content, and provides a simple user interface for easy use.
+# :email: Phiserman - Phishing Email Detector
 
-Features
-Real-time Email Scanning: Detects suspicious emails on Gmail and Outlook platforms.
-User Interface: Accessible popup to start and stop scanning, with a progress bar and result display.
-Visual Alerts: Highlights suspicious emails with a red border and a warning icon.
-Installation
-Clone the repository:
-bash
-Copy code
-git clone https://github.com/username/phiserman.git
-cd phiserman
-Load the extension in Chrome:
-Go to chrome://extensions/
+![Version](https://img.shields.io/badge/version-1.0-green) ![License](https://img.shields.io/badge/license-MIT-blue)
+
+**Phiserman** is a Chrome Extension that detects potential phishing emails in your Gmail or Outlook inbox. It scans for suspicious elements within emails, highlights them, and provides an easy-to-use interface to start and stop scans.
+
+---
+
+## :sparkles: Features
+
+- :shield: **Real-time Email Scanning**: Detects suspicious emails in Gmail and Outlook.
+- :white_check_mark: **User-Friendly Interface**: Popup controls for scanning with dynamic progress feedback.
+- :warning: **Visual Alerts**: Highlights flagged emails with a red border and warning message.
+
+## :computer: Installation
+
+1. **Clone the Repository**:
+   ```bash
+   git clone https://github.com/username/phiserman.git
+   cd phiserman
+Load the Extension in Chrome:
+Open Chrome and navigate to chrome://extensions/
 Enable Developer Mode
-Click Load unpacked and select the project directory.
-Usage
+Click Load unpacked and select the phiserman project directory.
+:hammer: Usage
 Open Gmail or Outlook in your browser.
 Click the Phiserman extension icon to open the popup.
-Click Start Scanning to detect and highlight any suspicious emails.
-Files Overview
+Click Start Scanning to detect and highlight any suspicious emails in your inbox.
+The extension will automatically highlight suspicious emails with a warning icon and red border.
+:file_folder: Files Overview
 Core Components
-manifest.json: Defines the extension's metadata, permissions, and specifies content scripts for Gmail and Outlook.
-
-background.js: Sets up a background listener that activates when Phiserman is installed.
-
+manifest.json: Specifies metadata, permissions, and settings for running the extension on Gmail and Outlook.
+background.js: Activates a background listener that logs a message when Phiserman is installed.
 javascript
 Copy code
 chrome.runtime.onInstalled.addListener(() => {
@@ -33,10 +39,10 @@ chrome.runtime.onInstalled.addListener(() => {
 Content Script
 content.js:
 
-Scans emails on Gmail and Outlook.
-Receives messages from popup.js to trigger scanning.
-Highlights emails flagged as suspicious by adding a red border and warning text.
-Example function for highlighting:
+Scans Gmail and Outlook emails for phishing content.
+Receives messages from popup.js to initiate the scan.
+Flags suspicious emails by adding a red border and warning text.
+Example function for flagging emails:
 
 javascript
 Copy code
@@ -50,11 +56,12 @@ function flagEmail(emailElement) {
 User Interface Components
 popup.html:
 
-Provides a UI with buttons to start and stop scanning, a progress bar, and result display.
+Provides the popup interface with controls to start and stop scanning.
+Displays a progress bar and scan results for user feedback.
 popup.js:
 
-Connects with content.js to initiate email scanning.
-Controls the scanning animation and displays results.
+Connects with content.js to initiate scanning in the current tab.
+Controls the progress animation and displays scan results in the popup.
 javascript
 Copy code
 document.getElementById("start-button").addEventListener("click", () => {
@@ -62,22 +69,34 @@ document.getElementById("start-button").addEventListener("click", () => {
         chrome.tabs.sendMessage(tabs[0].id, { message: "scan_email" });
     });
 });
-style.css: Styles the popup with a clean, user-friendly layout, and styles for buttons and the progress bar.
+style.css: Styles the popup interface, including the progress bar, buttons, and dialog layout, for a clean and professional look.
 
-How It Works
+:mag: How It Works
 Initialization:
 
-The extension sets up on installation and provides a popup interface.
+Phiserman initializes upon installation and provides a popup interface for users to interact with.
 Scanning Process:
 
-Upon clicking "Start Scanning," popup.js signals content.js to start scanning.
-content.js gathers email data and sends it to a local server (server.py) for analysis.
+When the Start Scanning button is clicked, popup.js sends a command to content.js.
+content.js scans the emails in Gmail or Outlook, sending each email’s data to a local server (server.py) for phishing detection.
 Detection and Highlighting:
 
-Emails flagged as phishing are highlighted with a warning message and red border.
-Backend (Server)
+Emails identified as suspicious are flagged by adding a warning message and red border around the email in the interface.
+:wrench: Backend (Server)
 main.py and server.py:
-These files run a Flask server that receives email data from content.js and assesses it for phishing traits.
-server.py defines routes for handling the email data, while main.py initiates the server.
-License
-This project is licensed under the MIT License.
+These files set up a Flask server that receives email data from content.js and analyzes it to predict phishing emails.
+server.py defines API routes to handle email data, while main.py runs the server.
+Screenshots
+
+Phiserman popup interface with controls
+
+
+Example of a flagged suspicious email in Gmail
+
+:scroll: License
+This project is licensed under the MIT License. See the LICENSE file for details.
+
+:information_source: About
+Phiserman is developed to provide an extra layer of security for users handling sensitive emails. It uses simple heuristics and integrates with a backend server to analyze email data, making it easier to detect phishing attempts before they cause harm.
+
+For more details or contributions, feel free to reach out or open an issue in the repository.
