@@ -23,44 +23,70 @@ function flagEmail(emailElement) {
     emailElement.prepend(warning);
 }
 
-// Function to scan emails on the page
 function scanEmails() {
-    // Select all email elements on the page
-    const emailElements = document.querySelectorAll(/* Your email element selector */);
+    console.log("Scanning emails...");
 
+    let emailRowSelector = '.zA',  // Set a default fallback
+        subjectSelector = '.bog',
+        senderSelector = '.yX';
+
+    // Determine the platform by checking the hostname
+    if (window.location.hostname.includes("mail.google.com")) {
+        console.log("Detected platform: Gmail");
+    } else if (window.location.hostname.includes("outlook.live.com")) {
+        emailRowSelector = '.lvHighlightAllClass'; // Adjust this if necessary
+        subjectSelector = '.lvHighlightSubjectClass';
+        senderSelector = '.lvHighlightFromClass';
+        console.log("Detected platform: Outlook");
+    } else {
+        console.warn("Unsupported platform for email scanning.");
+        return;
+    }
+
+    // Log the email row selector to confirm it's set
+    console.log("Using emailRowSelector:", emailRowSelector);
+
+    // Run querySelectorAll with the specified selector
+    const emailElements = document.querySelectorAll(emailRowSelector);
+    console.log("Email elements found:", emailElements.length);
+
+    if (emailElements.length === 0) {
+        console.warn("No email elements found with selector:", emailRowSelector);
+        return;  // Exit if no emails found to avoid further errors
+    }
+    
     emailElements.forEach(emailElement => {
         // Skip emails that have already been scanned
         if (!scannedEmails.has(emailElement)) {
             scannedEmails.add(emailElement);
+            console.log("Scanning email element:", emailElement);
 
-            // Extract email data
-            const subjectElement = emailElement.querySelector(/* Subject selector */);
-            const senderElement = emailElement.querySelector(/* Sender selector */);
-            const bodyElement = emailElement.querySelector(/* Body selector */);
+            // Use platform-specific selectors to get subject and sender
+            const subjectElement = emailElement.querySelector(subjectSelector);
+            const senderElement = emailElement.querySelector(senderSelector);
+            const bodyElement = document.body;  // Placeholder for email body content
 
             if (subjectElement && senderElement && bodyElement) {
                 const emailData = {
-                    subject: subjectElement.innerText,
-                    sender: senderElement.innerText,
-                    body: bodyElement.innerText
+                    subject: subjectElement.innerText || '',
+                    sender: senderElement.innerText || '',
+                    body: bodyElement.innerText || ''
                 };
+                console.log("Email data extracted:", emailData);
 
-                // Send email data to backend API
-                fetch('http://127.0.0.1d:5000', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
+                fetch('http://127.0.0.1:5000/predict', {
+                    method: 'POST', 
+                    headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(emailData)
                 })
                 .then(response => response.json())
                 .then(result => {
-                    if (result.suspicious) {
-                        // Flag the email as suspicious
+                    console.log("Server response:", result);
+                    if (result.is_phishing) {
                         flagEmail(emailElement);
                     }
                 })
-                .catch(error => console.error('Error:', error));
+                .catch(error => console.error('Error connecting to server:', error));
             } else {
                 console.warn('Email data could not be extracted for an email element.');
             }

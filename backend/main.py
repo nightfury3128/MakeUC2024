@@ -12,7 +12,9 @@ tqdm.pandas()
 # Load multiple datasets with progress bar
 file_paths = [
     r'data\emails.csv',  # original dataset
-    r'data\Phishing_Email.csv',  # add paths to additional datasets here
+    r'data\Phishing_Email.csv',
+    r'data\CEAS_08 .csv',
+    r'data\phishing_data_by_type.csv'
     ]
 
 print("Loading datasets...")
