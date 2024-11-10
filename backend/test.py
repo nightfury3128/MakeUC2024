@@ -55,5 +55,5 @@ Chris"""
 
 
 # Classify the email
-result = classify_email(safe_email)
+result = classify_email(phishing_email)
 print("The email is classified as:", result)
