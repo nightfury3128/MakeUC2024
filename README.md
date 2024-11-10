@@ -2,7 +2,7 @@
 
 ![Version](https://img.shields.io/badge/version-1.0-green) ![License](https://img.shields.io/badge/license-MIT-blue)
 
-**Phiserman** is a Chrome Extension that detects potential phishing emails in your Gmail or Outlook inbox. It scans for suspicious elements within emails, highlights them, and provides an easy-to-use interface to start and stop scans.
+**Phiserman** is a Chrome Extension that detects potential phishing emails in Gmail and Outlook. It scans emails, highlights suspicious content, and provides an easy-to-use interface to start and stop scans.
 
 ---
 
@@ -11,6 +11,8 @@
 - :shield: **Real-time Email Scanning**: Detects suspicious emails in Gmail and Outlook.
 - :white_check_mark: **User-Friendly Interface**: Popup controls for scanning with dynamic progress feedback.
 - :warning: **Visual Alerts**: Highlights flagged emails with a red border and warning message.
+
+---
 
 ## :computer: Installation
 
@@ -30,7 +32,9 @@ The extension will automatically highlight suspicious emails with a warning icon
 :file_folder: Files Overview
 Core Components
 manifest.json: Specifies metadata, permissions, and settings for running the extension on Gmail and Outlook.
+
 background.js: Activates a background listener that logs a message when Phiserman is installed.
+
 javascript
 Copy code
 chrome.runtime.onInstalled.addListener(() => {
@@ -71,7 +75,7 @@ document.getElementById("start-button").addEventListener("click", () => {
 });
 style.css: Styles the popup interface, including the progress bar, buttons, and dialog layout, for a clean and professional look.
 
-:mag: How It Works
+🔍 How It Works
 Initialization:
 
 Phiserman initializes upon installation and provides a popup interface for users to interact with.
@@ -93,10 +97,10 @@ Phiserman popup interface with controls
 
 Example of a flagged suspicious email in Gmail
 
-:scroll: License
+📜 License
 This project is licensed under the MIT License. See the LICENSE file for details.
 
-:information_source: About
+ℹ️ About
 Phiserman is developed to provide an extra layer of security for users handling sensitive emails. It uses simple heuristics and integrates with a backend server to analyze email data, making it easier to detect phishing attempts before they cause harm.
 
 For more details or contributions, feel free to reach out or open an issue in the repository.
