@@ -1,6 +1,6 @@
 html, body {
-    width: 500px;
-    height: 500px;
+    width: 350px;
+    height: 300px;
   }
 /* Center the dialog box */
 #phisherman-dialog {
@@ -54,7 +54,7 @@ html, body {
     color: #000000; /* Black text for Lorem Ipsum */
     margin: 15px 0;
     line-height: 1.5;
-    font-size: 16px;
+    font-size: 10px;
 }
 
 
