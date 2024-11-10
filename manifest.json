@@ -15,6 +15,7 @@
       "service_worker": "frontend/background.js"
   },
   "action": {
-      "default_popup": "frontend/Pop-up UI/popup.html"
+      "default_popup": "frontend/Pop-up UI/popup.html",
+      "default_icon": "icon.png"
   }
 }
