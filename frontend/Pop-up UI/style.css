@@ -4,7 +4,8 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 400px;
+    width: 1000px;
+    height: 1200px;
     background-color: #e6eaed; /* Background color for the entire dialog */
     border-radius: 10px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
