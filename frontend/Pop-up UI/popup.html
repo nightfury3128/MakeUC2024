@@ -5,10 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Phisherman Extension</title>
     <link rel="stylesheet" href="style.css"> <!-- Link to CSS file -->
-    <script src="script.js" defer></script> <!-- Link to JavaScript file -->
+    <script src="popup.js" defer></script> <!-- Link to JavaScript file (updated to popup.js) -->
 </head>
 <body>
-
 
 <div id="phisherman-dialog">
     <div id="phisherman-header">
@@ -26,12 +25,12 @@
     <div id="scan-progress-container">
         <div id="scan-progress"></div>
     </div>
+    <div id="result"></div> <!-- Added result div to display scan results -->
     <div id="phisherman-buttons">
         <button id="start-button">Start Scanning</button>
         <button id="stop-button" disabled>Stop Scanning</button>
     </div>
 </div>
-
 
 </body>
 </html>
