@@ -4,7 +4,7 @@
   <h1>Phisherman - Phishing Email Detector</h1>
 </p>
 
-Phiserman is a Chrome Extension that detects potential phishing emails in Gmail and Outlook. It scans emails, highlights suspicious content, and provides an easy-to-use interface to start and stop scans.
+Phisherman is a Chrome Extension that detects potential phishing emails in Gmail and Outlook. It scans emails, highlights suspicious content, and provides an easy-to-use interface to start and stop scans.
 
 ---
 
@@ -17,7 +17,7 @@ Phiserman is a Chrome Extension that detects potential phishing emails in Gmail 
 1. **Clone the Repository:**
    ```bash
    git clone https://github.com/username/phiserman.git
-   cd phiserman
+   cd phisherman
    ```
 2. **Load the Extension in Chrome**:
    - Open Chrome and navigate to `chrome://extensions/`
